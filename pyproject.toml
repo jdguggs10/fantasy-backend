@@ -3,7 +3,7 @@ name = "fantasy-backend"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Gerald Gugger",email = "gerald.gugger@gmail.com"}
+    {name = "Gerald Gugger", email = "gerald.gugger@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.11"
@@ -16,6 +16,9 @@ dependencies = [
 ]
 
 [tool.poetry]
+packages = [
+    { include = "app" }
+]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
