@@ -26,7 +26,7 @@ async def get_advice(body: AdviceRequest) -> AdviceResponse:
 @app.post("/custom-advice", response_model=AdviceResponse)
 async def get_custom_advice(
     body: AdviceRequest, 
-    model: str = Query("gpt-4.1", description="OpenAI model to use (e.g., gpt-4.1, gpt-4o)")
+    model: str = Query("gpt-4.1", description="OpenAI model to use (e.g., gpt-4.1)")
 ) -> AdviceResponse:
     """
     Similar to /advice but allows specifying which OpenAI model to use.

@@ -9,10 +9,10 @@ client = OpenAI(api_key=api_key)
 
 # 3. Make a dummy Responses API call
 response = client.responses.create(
-    model="gpt-4.1",              # or "gpt-4.1", "gpt-4.1-mini", etc.
+    model="gpt-4.1",              # Using the gpt-4.1 model
     instructions="You are a helpful assistant.",
     input="Ping"
 )
 
-# 4. Print out the model’s reply
-print(response.output_text)
+# 4. Print out the model's reply
+print(response.output_text) 

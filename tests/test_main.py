@@ -36,18 +36,18 @@ def test_get_custom_advice():
     # Create a mock response
     mock_response = MagicMock()
     mock_response.output_text = "Custom model response"
-    mock_response.model = "gpt-4.1-32k"
+    mock_response.model = "gpt-4.1"
 
     with patch('app.services.openai_client.client.responses.create', return_value=mock_response):
         response = client.post(
-            "/custom-advice?model=gpt-4.1-32k&max_tokens=200&temperature=0.8",
+            "/custom-advice?model=gpt-4.1&max_tokens=200&temperature=0.8",
             json=test_request.model_dump()
         )
 
         assert response.status_code == 200
         assert response.json() == {
             "reply": "Custom model response",
-            "model": "gpt-4.1-32k"
+            "model": "gpt-4.1"
         }
 
 def test_get_advice_invalid_request():

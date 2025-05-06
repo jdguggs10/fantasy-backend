@@ -8,6 +8,7 @@ def test_get_response_success():
     # Mock response creation
     mock_response = MagicMock()
     mock_response.output_text = "Test response"
+    mock_response.model = "gpt-4.1"
     
     with patch('app.services.openai_client.client.responses.create', return_value=mock_response):
         response_text, model_used = get_response("Test prompt")
@@ -25,9 +26,11 @@ def test_get_response_custom_model():
     # Mock response creation
     mock_response = MagicMock()
     mock_response.output_text = "Custom model response"
+    mock_response.model = "gpt-4.1"
     
     with patch('app.services.openai_client.client.responses.create', return_value=mock_response):
-        response_text, model_used = get_response("Test prompt", model="gpt-4.1-32k")
+        response_text, model_used = get_response("Test prompt", model="gpt-4.1")
         
         assert response_text == "Custom model response"
-        assert model_used == "gpt-4.1-32k"
+        assert model_used == "gpt-4.1"
+
