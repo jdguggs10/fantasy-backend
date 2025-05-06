@@ -1,6 +1,8 @@
 import pytest
 from app.services.openai_client import get_response
 from unittest.mock import patch, MagicMock
+import os
+from openai import OpenAI
 
 def test_get_response_success():
     # Mock response creation
@@ -11,7 +13,7 @@ def test_get_response_success():
         response_text, model_used = get_response("Test prompt")
         
         assert response_text == "Test response"
-        assert model_used == "gpt-4o"
+        assert model_used == "gpt-4.1"
 
 def test_get_response_error():
     with patch('app.services.openai_client.client.responses.create', side_effect=Exception("API Error")):
@@ -25,7 +27,7 @@ def test_get_response_custom_model():
     mock_response.output_text = "Custom model response"
     
     with patch('app.services.openai_client.client.responses.create', return_value=mock_response):
-        response_text, model_used = get_response("Test prompt", model="gpt-4-turbo")
+        response_text, model_used = get_response("Test prompt", model="gpt-4.1-32k")
         
         assert response_text == "Custom model response"
-        assert model_used == "gpt-4-turbo" 
+        assert model_used == "gpt-4.1-32k"
