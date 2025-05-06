@@ -40,7 +40,7 @@ def get_response(
             model=model,
             instructions=instructions,
             input=prompt,
-            max_tokens=max_tokens,
+            max_output_tokens=max_tokens,
             temperature=temperature,
         )
         status = getattr(resp, "http_response", None)
